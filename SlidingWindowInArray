@@ -1,0 +1,29 @@
+class Main{
+    public static void main(String args[]){
+        int[] users={100,48,82,57,34,112,65};
+        int t=users.length-days+1;
+        int[] ans=new int[t];
+        int days=3;
+        int windowSum=0,max=0;
+        double avg=0;
+        for(int i=0;i<days;i++){
+            windowSum=windowSum+users[i];
+        }
+        max=windowSum;
+        avg=(double)windowSum/days;
+        
+        System.out.println("total of days "+windowSum);
+        System.out.println("average of days " +avg);
+        
+        for(int i=1;i<=users.length-days;i++){
+            windowSum=windowSum-users[i-1]+users[i+days-1];
+            avg=(double)windowSum/days;
+            if(windowSum>max){
+                max=windowSum;
+            }
+            System.out.println("total of days "+windowSum);
+            System.out.println("average of days " +avg);
+        }
+        System.out.println("max " + max);
+    }
+}
